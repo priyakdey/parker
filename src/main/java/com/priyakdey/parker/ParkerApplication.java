@@ -52,11 +52,12 @@ public class ParkerApplication {
 
         try {
             if (Files.notExists(path) || Files.isDirectory(path) || Files.size(path) == 0) {
-                throw new IOException("Bad input file. Please re-check");
+                throw new IOException("Bad input file - " + filepath);
             }
         } catch (IOException ex) {
-            System.err.printf("ERROR: Error occurred while reading file stats. Details = %s%n",
-                ex.getMessage());
+            System.err.printf(
+                "ERROR: Error occurred while reading file stats fo %s. Details = %s%n",
+                filepath, ex.getMessage());
             System.exit(1);
         }
 

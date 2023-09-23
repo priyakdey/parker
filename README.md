@@ -57,7 +57,19 @@ from that file.
 
 ### Setup
 
-Later.... !!!!
+1. Make sure to have JDK 21 installed on your machine, something like [sdkman](https://sdkman.io/) can help get jdks
+   faster.
+2. In case you cannot set JAVA_HOME to jdk 21, you can add a `gradle.properties` files in the root and
+   add `org.gradle.java.home=<PATH TO JDK>`, which is what I prefer, rather than changing default JDK version on my
+   machine.
+3. To set up the application, you can do `make build` which will download all your dependencies.
+4. To run the test suite, you can run `make test`.
+5. To run the application with an input file run, `make run FILE=<path to input file>`
+
+Alternatively to be compliant to requirements, you can just do the following:
+
+1. To build the project and run all test cases, run `./bin/setup`
+2. To run the project, run `./bin/parking_lot <file_path>`
 
 ### Example
 
@@ -84,6 +96,8 @@ park KA-09-HH-0123
 status
 ```
 
+[Sample File](file_inputs.txt)
+
 - ##### Output (to STDOUT):
 
 ```text
@@ -94,8 +108,8 @@ Allocated slot number: 3
 Allocated slot number: 4
 Allocated slot number: 5
 Allocated slot number: 6
-Registration number KA-01-HH 3141 with Slot Number 6 is free with Charge 30
-Slot No. Registration No.
+Registration number KA-01-HH-3141 with Slot Number 6 is free with Charge 30
+Slot No.Registration No.
 1 KA-01-HH-1234
 2 KA-01-HH-9999
 3 KA-01-BB-0001
@@ -103,17 +117,22 @@ Slot No. Registration No.
 5 KA-01-HH-2701
 Allocated slot number: 6
 Sorry, parking lot is full
-Registration number KA-01-HH1234 with Slot Number 1 is free with Charge 30 
-Registration number KA-01-BB0001 with Slot Number 3 is free with Charge 50 
-Registration number DL-12-AA-9999 not found 
+Registration number KA-01-HH-1234 with Slot Number 1 is free with Charge 30
+Registration number KA-01-BB-0001 with Slot Number 3 is free with Charge 50
+Registration number DL-12-AA-9999 not found
 Allocated slot number: 1
 Allocated slot number: 3
 Sorry, parking lot is full
-Slot No. Registration No.
+Slot No.Registration No.
 1 KA-09-HH-0987
 2 KA-01-HH-9999
 3 CA-09-IO-1111
+4 KA-01-HH-7777
+5 KA-01-HH-2701
+6 KA-01-P-333
 ```
+
+[Sample File](file_output.txt)
 
 ### Rules
 
@@ -171,3 +190,5 @@ When given an option, always choose the easiest path!
 ### LICENSE
 
 This project is under MIT LICENSE, a copy of which can be found [here](LICENSE).
+
+**DISCLAIMER** - Have used chatgpt to generate the javadocs. 

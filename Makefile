@@ -3,7 +3,7 @@
 
 
 run:
-	./gradlew run --args='${FILE}'
+	./gradlew run --args=${FILE}
 
 build:
 	./gradlew build --no-build-cache
