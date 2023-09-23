@@ -30,6 +30,6 @@ public class LeaveCommand implements Command {
      */
     @Override
     public void execute(String... args) {
-
+        System.out.println("TODO");
     }
 }

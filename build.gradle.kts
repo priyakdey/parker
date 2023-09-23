@@ -55,7 +55,7 @@ dependencies {
 }
 
 application {
-    mainClass = "org.priyakdey.parker.Main"
+    mainClass = "com.priyakdey.parker.ParkerApplication"
 }
 
 // @formatter:off
