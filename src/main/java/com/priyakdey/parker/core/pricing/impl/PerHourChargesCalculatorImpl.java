@@ -1,10 +1,10 @@
 package com.priyakdey.parker.core.pricing.impl;
 
-import com.priyakdey.parker.core.pricing.ParkingFeeCalculator;
+import com.priyakdey.parker.core.pricing.ChargesCalculator;
 import com.priyakdey.parker.exception.BadInputException;
 
 /**
- * Implementation of the {@link ParkingFeeCalculator} that calculates parking fees
+ * Implementation of the {@link ChargesCalculator} that calculates parking fees
  * based on a per-hour pricing model.
  *
  * <p>
@@ -21,7 +21,7 @@ import com.priyakdey.parker.exception.BadInputException;
  *
  * @author Priyak Dey
  */
-public class PerHourFeeCalculatorImpl implements ParkingFeeCalculator {
+public class PerHourChargesCalculatorImpl implements ChargesCalculator {
 
     /**
      * The fixed charge applicable for parking durations up to FLAT_RATE_DURATION_HOURS.
