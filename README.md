@@ -59,9 +59,13 @@ from that file.
 
 1. Make sure to have JDK 21 installed on your machine, something like [sdkman](https://sdkman.io/) can help get jdks faster.
 2. In case you cannot set JAVA_HOME to jdk 21, you can add a `gradle.properties` files in the root and add `org.gradle.java.home=<PATH TO JDK>`, which is what I prefer, rather than changing default JDK version on my machine.
-3. To setup the application, you can do `make build` which will download all your dependencies.
+3. To set up the application, you can do `make build` which will download all your dependencies.
 4. To run the test suite, you can run `make test`.
 5. To run the application with an input file run, `make run FILE=<path to input file>`
+
+Alternatively to be compliant to requirements, you can just do the following:
+1. To build the project and run all test cases, run `./bin/setup`
+2. To run the project, run `./bin/parking_lot <file_path>`
 
 ### Example
 
