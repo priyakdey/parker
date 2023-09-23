@@ -1,6 +1,10 @@
 package com.priyakdey.parker.command.impl;
 
 import com.priyakdey.parker.command.Command;
+import com.priyakdey.parker.context.ApplicationContext;
+import com.priyakdey.parker.service.ParkingService;
+import java.util.Map;
+import java.util.SortedMap;
 
 /**
  * Represents the command to retrieve and display the current status of the parking lot.
@@ -13,6 +17,9 @@ import com.priyakdey.parker.command.Command;
  * @author Priyak Dey
  */
 public class StatusCommand implements Command {
+    private static final String STATUS_HEADER = "Slot No. Registration No.";
+    private static final String STATUS_MSG_TMPL = "%d %s%n";
+
 
     /**
      * Executes the command to retrieve the current status of the parking lot.
@@ -30,6 +37,19 @@ public class StatusCommand implements Command {
      */
     @Override
     public void execute(String... args) {
-        System.out.println("TODO");
+        ApplicationContext ctx = ApplicationContext.getInstance();
+        ParkingService parkingService = ctx.get(ParkingService.class);
+
+        SortedMap<Integer, String> status = parkingService.status();
+
+        if (!status.isEmpty()) {
+            System.out.println(STATUS_HEADER);
+
+            for (Map.Entry<Integer, String> entry : status.entrySet()) {
+                System.out.printf(STATUS_MSG_TMPL, entry.getKey(), entry.getValue());
+            }
+
+        }
+
     }
 }
