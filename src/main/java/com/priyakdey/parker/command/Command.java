@@ -15,9 +15,18 @@ package com.priyakdey.parker.command;
 public interface Command {
 
     /**
-     * Executes the command with the specified arguments.
+     * Executes the encapsulated command action based on the provided arguments.
      *
-     * @param args An array of string arguments to be used when executing the command.
+     * <p>
+     * Implementers should provide the specific behavior associated with
+     * this command, utilizing the input arguments as necessary to perform
+     * the operation. Implementations should also ensure proper argument
+     * validation and handle possible runtime exceptions or errors.
+     * </p>
+     *
+     * @param args Variable-length argument list representing the parameters
+     *             required for the command's execution.
+     *             Specific commands determine how these arguments are used.
      */
-    void execute(String[] args);
+    void execute(String... args);
 }
