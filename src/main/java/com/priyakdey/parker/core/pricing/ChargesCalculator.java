@@ -17,7 +17,7 @@ package com.priyakdey.parker.core.pricing;
  *
  * @author Priyak Dey
  */
-public interface ParkingFeeCalculator {
+public interface ChargesCalculator {
 
     /**
      * Computes the parking fee for the specified number of hours.
