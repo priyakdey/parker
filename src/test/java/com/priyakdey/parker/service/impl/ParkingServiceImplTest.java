@@ -12,6 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import com.priyakdey.parker.core.exception.TestSetupException;
 import com.priyakdey.parker.core.model.ParkingCharge;
 import com.priyakdey.parker.core.pricing.impl.PerHourChargesCalculatorImpl;
 import com.priyakdey.parker.core.service.ParkingLot;
@@ -72,14 +73,14 @@ class ParkingServiceImplTest {
     @DisplayName("Should return base charges")
     @Test
     void test_leave_shouldReturnBaseCharge() {
-        parkingService.park(REG_NUM_1);
+        Integer id = parkingService.park(REG_NUM_1).orElseThrow(TestSetupException::new);
 
         int hoursParked = 2;
         int expectedCharge = 10;
 
         ParkingCharge actual = parkingService.leave(REG_NUM_1, hoursParked);
 
-        ParkingCharge expected = new ParkingCharge(REG_NUM_1, Integer.toString(hoursParked),
+        ParkingCharge expected = new ParkingCharge(REG_NUM_1, Integer.toString(id),
             Integer.toString(expectedCharge));
 
         assertEquals(expected, actual, assertionMsg(expected, actual));
@@ -88,14 +89,14 @@ class ParkingServiceImplTest {
     @DisplayName("Should return incremental charges")
     @Test
     void test_leave_shouldReturnIncrementCharge() {
-        parkingService.park(REG_NUM_5);
+        Integer parkedId = parkingService.park(REG_NUM_5).orElseThrow(TestSetupException::new);
 
         int hoursParked = 5;
         int expectedCharge = 40;
 
         ParkingCharge actual = parkingService.leave(REG_NUM_5, hoursParked);
 
-        ParkingCharge expected = new ParkingCharge(REG_NUM_5, Integer.toString(hoursParked),
+        ParkingCharge expected = new ParkingCharge(REG_NUM_5, Integer.toString(parkedId),
             Integer.toString(expectedCharge));
 
         assertEquals(expected, actual, assertionMsg(expected, actual));

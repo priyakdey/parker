@@ -12,12 +12,12 @@ package com.priyakdey.parker.core.model;
  * It is a data classes which holds the following information:
  * <li>
  *     <ul>registrationNumber: The registration number of the parked vehicle.</ul>
- *     <ul>hoursParked: The number of hours the vehicle has been parked. Example formats "2", "2.5", "2 hours 30 minutes", etc.</ul>
+ *     <ul>parkedSpot: Parking Spot id</ul>
  *     <ul>charge: The charge incurred for the parking duration. Example formats: "10", "10.6", "10 dollars 60 cents", etc.<ul/>
  * </li>
  * <p/>
  *
  * @author Priyak Dey
  */
-public record ParkingCharge(String registrationNumber, String hoursParked, String charge) {
+public record ParkingCharge(String registrationNumber, String parkedSpot, String charge) {
 }

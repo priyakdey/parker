@@ -58,7 +58,7 @@ public class LeaveCommand implements Command {
             ParkingCharge parkingCharge =
                 parkingService.leave(registrationNumber, Integer.parseInt(hoursParkedS));
             System.out.printf(LEAVE_MSG_TMPL, parkingCharge.registrationNumber(),
-                parkingCharge.hoursParked(), parkingCharge.charge());
+                parkingCharge.parkedSpot(), parkingCharge.charge());
         } catch (BadInputException ex) {
             System.out.printf(VEHICLE_NOT_FOUND_MSG_TMPL, registrationNumber);
         }

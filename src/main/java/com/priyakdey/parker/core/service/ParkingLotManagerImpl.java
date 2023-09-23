@@ -62,10 +62,11 @@ public class ParkingLotManagerImpl implements ParkingLotManager {
      * </p>
      *
      * @param registrationNumber The registration number of the car which is leaving.
+     * @return The parking spot at which vehicle was parked.
      * @throws BadInputException if no such registration number is found in the parking lot.
      */
     @Override
-    public void vacateParkingSpace(String registrationNumber) {
+    public String vacateParkingSpace(String registrationNumber) {
         Optional<ParkingSpace> optionalParkingSpace =
             parkingLot.getParkingSpaceByRegistrationNumber(registrationNumber);
 
@@ -76,7 +77,9 @@ public class ParkingLotManagerImpl implements ParkingLotManager {
                     registrationNumber));
         }
 
-        parkingLot.vacateParkingSpace(optionalParkingSpace.get());
+        ParkingSpace parkingSpace = optionalParkingSpace.get();
+        parkingLot.vacateParkingSpace(parkingSpace);
+        return Integer.toString(parkingSpace.getId());
     }
 
     /**
