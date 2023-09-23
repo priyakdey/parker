@@ -38,7 +38,6 @@ import java.util.StringJoiner;
  */
 public class Vehicle {
     private final String registrationNumber;
-    private final String color;
 
     private ParkingSpace parkedAt;
 
@@ -46,11 +45,9 @@ public class Vehicle {
      * Constructs a new vehicle with the given registration number, color, and entry timestamp.
      *
      * @param registrationNumber the vehicle's unique registration number
-     * @param color              the vehicle's color
      */
-    public Vehicle(String registrationNumber, String color) {
+    public Vehicle(String registrationNumber) {
         this.registrationNumber = registrationNumber;
-        this.color = color;
     }
 
     /**
@@ -62,14 +59,6 @@ public class Vehicle {
         return registrationNumber;
     }
 
-    /**
-     * Returns the vehicle's color.
-     *
-     * @return the vehicle's color.
-     */
-    public String getColor() {
-        return color;
-    }
 
     /**
      * Returns the parking space allocated to the vehicle.
@@ -85,31 +74,5 @@ public class Vehicle {
      */
     public void setParkedAt(ParkingSpace parkedAt) {
         this.parkedAt = parkedAt;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        Vehicle vehicle = (Vehicle) o;
-        return Objects.equals(registrationNumber, vehicle.registrationNumber) &&
-            Objects.equals(color, vehicle.color);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(registrationNumber, color);
-    }
-
-    @Override
-    public String toString() {
-        return new StringJoiner(", ", Vehicle.class.getSimpleName() + "[", "]")
-            .add("registrationNumber='" + registrationNumber + "'")
-            .add("color='" + color + "'")
-            .toString();
     }
 }
