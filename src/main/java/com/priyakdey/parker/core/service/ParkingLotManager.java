@@ -3,6 +3,7 @@ package com.priyakdey.parker.core.service;
 import com.priyakdey.parker.core.model.ParkingCharge;
 import com.priyakdey.parker.core.model.ParkingSpace;
 import com.priyakdey.parker.core.model.Vehicle;
+import com.priyakdey.parker.exception.BadInputException;
 import java.util.Optional;
 import java.util.TreeMap;
 
@@ -36,10 +37,12 @@ public interface ParkingLotManager {
      * If there is a vehicle currently parked in the space, the vehicle will
      * be removed from the space. The space itself will be marked as vacant.
      * </p>
-     * <p>
-     * * @param registrationNumber The registration number of the car which is leaving.
+     *
+     * @param registrationNumber The registration number of the car which is leaving.
+     * @return The parking spot at which vehicle was parked.
+     * @throws BadInputException if no such registration number is found in the parking lot.
      */
-    void vacateParkingSpace(String registrationNumber);
+    String vacateParkingSpace(String registrationNumber);
 
 
     /**

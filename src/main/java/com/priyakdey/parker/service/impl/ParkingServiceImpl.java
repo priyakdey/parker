@@ -44,10 +44,9 @@ public class ParkingServiceImpl implements ParkingService {
      */
     @Override
     public ParkingCharge leave(String registrationNumber, int hoursParked) {
-        parkingLotManager.vacateParkingSpace(registrationNumber);
+        String parkingSpaceId = parkingLotManager.vacateParkingSpace(registrationNumber);
         Number number = chargesCalculator.computePrice(hoursParked);
-        return new ParkingCharge(registrationNumber, Integer.toString(hoursParked),
-            number.toString());
+        return new ParkingCharge(registrationNumber, parkingSpaceId, number.toString());
     }
 
     /**
