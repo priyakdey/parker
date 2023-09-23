@@ -15,18 +15,21 @@ import com.priyakdey.parker.command.Command;
 public class StatusCommand implements Command {
 
     /**
-     * Processes the request to obtain the current status of the parking lot based on provided arguments.
+     * Executes the command to retrieve the current status of the parking lot.
      *
      * <p>
-     * The provided arguments might be used to determine the specific type of status details required,
-     * for instance, occupied slots, available slots, or a complete summary.
+     * The method is expected to handle operations like fetching the current occupancy,
+     * number of free spaces, or any other metrics or details deemed necessary.
+     * Note: While this method accepts arguments, it's anticipated that for a status command,
+     * no specific arguments would typically be required. However, the mechanism is in place
+     * for flexibility.
      * </p>
      *
-     * @param args An array of string arguments to be used when executing the command.
-     *             Specific details or options related to the status request might be included.
+     * @param args An array of string arguments, which in the context of a status command, are
+     *             expected to be empty or not specifically used.
      */
     @Override
-    public void execute(String[] args) {
+    public void execute(String... args) {
 
     }
 }

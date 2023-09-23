@@ -16,19 +16,20 @@ import com.priyakdey.parker.command.Command;
 public class LeaveCommand implements Command {
 
     /**
-     * Processes the vehicle's departure based on provided arguments.
+     * Executes the command to process the departure of a vehicle from the parking lot.
      *
      * <p>
-     * The provided arguments might include details like the vehicle's
-     * registration number or the ID of its parking slot, which will be
-     * used to process its departure from the parking facility.
+     * This method takes in the required arguments to facilitate the vehicle's departure,
+     * such as the vehicle's registration number or the parking slot identifier. Based on these
+     * arguments, it carries out the necessary operations to successfully log the vehicle's
+     * departure and compute any associated charges if applicable.
      * </p>
      *
-     * @param args An array of string arguments to be used when executing the command.
-     *             Details related to the vehicle or parking slot might be included.
+     * @param args An array of string arguments containing necessary details for processing the departure.
+     *             For instance, it could include the vehicle's registration number.
      */
     @Override
-    public void execute(String[] args) {
+    public void execute(String... args) {
 
     }
 }

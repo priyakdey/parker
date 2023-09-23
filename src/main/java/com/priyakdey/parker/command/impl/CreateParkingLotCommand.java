@@ -16,17 +16,20 @@ import com.priyakdey.parker.command.Command;
 class CreateParkingLotCommand implements Command {
 
     /**
-     * Executes the command with the specified arguments to create a parking lot.
+     * Executes the command to initialize a new parking lot based on provided arguments.
      *
      * <p>
-     * This method should handle all the necessary steps to set up a parking lot
-     * based on the provided arguments.
+     * This method is tasked with interpreting the given arguments and then setting up a parking
+     * lot accordingly. This may involve establishing its capacity, setting up individual parking
+     * slots, and other necessary initial configurations.
      * </p>
      *
-     * @param args An array of string arguments to be used when executing the command.
+     * @param args An array of string arguments that provide configurations or parameters for the
+     *             parking lot creation. For example, one might expect a capacity argument indicating
+     *             how many vehicles the parking lot should be able to accommodate.
      */
     @Override
-    public void execute(String[] args) {
+    public void execute(String... args) {
 
     }
 }
