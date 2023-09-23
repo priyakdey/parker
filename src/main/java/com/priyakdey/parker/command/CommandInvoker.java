@@ -1,10 +1,11 @@
 package com.priyakdey.parker.command;
 
+import static com.priyakdey.parker.handler.InsufficientArgsExceptionHandler.checkArgsLength;
+
 import com.priyakdey.parker.exception.BadInputException;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.stream.Stream;
 
 /**
  * @author Priyak Dey
@@ -21,9 +22,7 @@ public class CommandInvoker {
     }
 
     public void execute(String[] args) {
-        if (args.length < 1) {
-            throw new BadInputException("Insufficient Arguments.");
-        }
+        checkArgsLength(args, 1);
 
         String cmd = args[0].trim();
         if (cmd.isEmpty() || !commandMap.containsKey(cmd)) {
