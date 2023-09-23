@@ -1,0 +1,12 @@
+#!/bin/sh
+
+
+input_file="$1"
+
+if [ -z "$input_file" ];then
+  echo "ERROR: No input file provided."
+  echo "USAGE: ./bin/parking_lot <FILE_PATH>"
+  exit 1
+fi
+
+./gradlew run --args="$1"
