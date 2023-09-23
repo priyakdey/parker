@@ -172,6 +172,12 @@ tasks.withType<Test> {
     })
 
     finalizedBy(tasks.jacocoTestReport)
+
+    configure<JacocoTaskExtension> {
+        isEnabled = true
+        excludes = listOf("com.priyakdey.parker.core.model.*")
+    }
+
 }
 // @formatter:on
 
