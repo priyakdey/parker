@@ -70,6 +70,7 @@ public class ParkingLotManagerImpl implements ParkingLotManager {
             parkingLot.getParkingSpaceByRegistrationNumber(registrationNumber);
 
         if (optionalParkingSpace.isEmpty()) {
+            // TODO: Create another custom exception for handling this case
             throw new BadInputException(
                 String.format("No vehicle with registration number %s is parked right now.",
                     registrationNumber));

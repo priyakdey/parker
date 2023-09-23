@@ -1,6 +1,13 @@
 package com.priyakdey.parker.command.impl;
 
+import static com.priyakdey.parker.handler.InsufficientArgsExceptionHandler.checkArgsLength;
+
 import com.priyakdey.parker.command.Command;
+import com.priyakdey.parker.common.Validator;
+import com.priyakdey.parker.context.ApplicationContext;
+import com.priyakdey.parker.core.model.ParkingCharge;
+import com.priyakdey.parker.exception.BadInputException;
+import com.priyakdey.parker.service.ParkingService;
 
 /**
  * Represents the command to process a vehicle's departure from the parking lot.
@@ -14,6 +21,11 @@ import com.priyakdey.parker.command.Command;
  * @author Priyak Dey
  */
 public class LeaveCommand implements Command {
+
+    private static final String LEAVE_MSG_TMPL =
+        "Registration number %s with Slot Number %s is free with Charge %s%n";
+
+    private static final String VEHICLE_NOT_FOUND_MSG_TMPL = "Registration number %s not found%n";
 
     /**
      * Executes the command to process the departure of a vehicle from the parking lot.
@@ -30,6 +42,26 @@ public class LeaveCommand implements Command {
      */
     @Override
     public void execute(String... args) {
-        System.out.println("TODO");
+        checkArgsLength(args, 2);
+
+        String registrationNumber = args[0].trim();
+        String hoursParkedS = args[1].trim();
+
+        if (!Validator.isRegistrationNumber(registrationNumber) ||
+            !Validator.isDigit(hoursParkedS)) {
+            throw new BadInputException("Incorrect format of input.");
+        }
+
+        ApplicationContext ctx = ApplicationContext.getInstance();
+        ParkingService parkingService = ctx.get(ParkingService.class);
+        try {
+            ParkingCharge parkingCharge =
+                parkingService.leave(registrationNumber, Integer.parseInt(hoursParkedS));
+            System.out.printf(LEAVE_MSG_TMPL, parkingCharge.registrationNumber(),
+                parkingCharge.hoursParked(), parkingCharge.charge());
+        } catch (BadInputException ex) {
+            System.out.printf(VEHICLE_NOT_FOUND_MSG_TMPL, registrationNumber);
+        }
+
     }
 }
